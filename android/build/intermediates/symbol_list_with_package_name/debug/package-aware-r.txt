@@ -836,6 +836,11 @@ color foreground_material_dark
 color foreground_material_light
 color highlighted_text_material_dark
 color highlighted_text_material_light
+color ionic_qrcode_camerax_alpha_background
+color ionic_qrcode_camerax_colorAccent
+color ionic_qrcode_camerax_colorPrimary
+color ionic_qrcode_camerax_colorPrimaryDark
+color ionic_qrcode_camerax_permission_background
 color material_blue_grey_800
 color material_blue_grey_900
 color material_blue_grey_950
@@ -1391,12 +1396,15 @@ drawable ic_clear_black_24dp
 drawable ic_edit_black_24dp
 drawable ic_keyboard_arrow_left_black_24dp
 drawable ic_keyboard_arrow_right_black_24dp
+drawable ic_launcher_background
 drawable ic_menu_arrow_down_black_24dp
 drawable ic_menu_arrow_up_black_24dp
 drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable ic_qr_code
+drawable ic_qr_code_bg
 drawable ic_transparent
 drawable mtrl_dialog_background
 drawable mtrl_dropdown_arrow
@@ -1597,10 +1605,12 @@ id parentPanel
 id parent_matrix
 id password_toggle
 id percent
+id permission_wrapper
 id pin
 id progress_circular
 id progress_horizontal
 id radio
+id request_permission_again
 id right
 id right_icon
 id right_side
@@ -1662,6 +1672,7 @@ id text_input_start_icon
 id textinput_counter
 id textinput_error
 id textinput_helper_text
+id texture_view
 id time
 id title
 id titleDividerNoCustom
@@ -1799,6 +1810,8 @@ layout notification_template_custom_big
 layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout permission_denied
+layout scanner_activity
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
@@ -1915,7 +1928,6 @@ string mtrl_picker_toggle_to_calendar_input_mode
 string mtrl_picker_toggle_to_day_selection
 string mtrl_picker_toggle_to_text_input_mode
 string mtrl_picker_toggle_to_year_selection
-string my_string
 string ok
 string password_toggle_content_description
 string path_password_eye

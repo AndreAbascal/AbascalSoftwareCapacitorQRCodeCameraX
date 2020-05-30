@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/permission_wrapper"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/ionic_qrcode_camerax_permission_background">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="Leitura do Código QR"
+            android:textAlignment="center"
+            android:textColor="#C7C7C7"
+            android:textSize="24dp"></TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:lineSpacingExtra="4dp"
+            android:text="Precisamos do acesso a câmera do dispositivo para ler o QR Code da máquina."
+            android:textAlignment="center"
+            android:textColor="#999999"
+            android:textSize="16dp"></TextView>
+        <Button
+            android:id="@+id/request_permission_again"
+            android:textSize="12sp"
+            android:textColor="#3897F0"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ativar"
+            style="?android:attr/borderlessButtonStyle"></Button>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,3 +1,11 @@
 <resources>
 
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/ionic_qrcode_camerax_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/ionic_qrcode_camerax_colorPrimaryDark</item>
+        <item name="colorAccent">@color/ionic_qrcode_camerax_colorAccent</item>
+    </style>
+
 </resources>

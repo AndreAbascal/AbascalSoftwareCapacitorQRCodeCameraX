@@ -1,5 +1,17 @@
 R_DEF: Internal format may change without notice
 local
-id webview
-layout bridge_layout_main
-string my_string
+color ionic_qrcode_camerax_alpha_background
+color ionic_qrcode_camerax_colorAccent
+color ionic_qrcode_camerax_colorPrimary
+color ionic_qrcode_camerax_colorPrimaryDark
+color ionic_qrcode_camerax_permission_background
+drawable ic_launcher_background
+drawable ic_qr_code
+drawable ic_qr_code_bg
+id permission_wrapper
+id request_permission_again
+id texture_view
+layout permission_denied
+layout scanner_activity
+string app_name
+style AppTheme

@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="my_string">Just a simple string</string>
+    <color name="ionic_qrcode_camerax_alpha_background">#BF000000</color>
+    <color name="ionic_qrcode_camerax_colorAccent">#D81B60</color>
+    <color name="ionic_qrcode_camerax_colorPrimary">#008577</color>
+    <color name="ionic_qrcode_camerax_colorPrimaryDark">#00574B</color>
+    <color name="ionic_qrcode_camerax_permission_background">#FF262626</color>
+    <string name="app_name">QRCodeScanner</string>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/ionic_qrcode_camerax_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/ionic_qrcode_camerax_colorPrimaryDark</item>
+        <item name="colorAccent">@color/ionic_qrcode_camerax_colorAccent</item>
+    </style>
 </resources>

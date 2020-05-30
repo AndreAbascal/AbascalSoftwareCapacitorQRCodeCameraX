@@ -34,7 +34,7 @@ import java.util.List;
 
 public class ScannerBarcodeActivity extends AppCompatActivity {
 
-    public static final int OPEN_APP_SETTINGS = 12345;
+    // public static final int OPEN_APP_SETTINGS = 12345;
     private static int REQUEST_CODE_CAMERA = 38;
     private static final String TAG = "IQCX->ScannerActivity";
 

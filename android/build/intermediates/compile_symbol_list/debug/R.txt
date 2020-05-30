@@ -835,6 +835,11 @@ int color foreground_material_dark 0x0
 int color foreground_material_light 0x0
 int color highlighted_text_material_dark 0x0
 int color highlighted_text_material_light 0x0
+int color ionic_qrcode_camerax_alpha_background 0x0
+int color ionic_qrcode_camerax_colorAccent 0x0
+int color ionic_qrcode_camerax_colorPrimary 0x0
+int color ionic_qrcode_camerax_colorPrimaryDark 0x0
+int color ionic_qrcode_camerax_permission_background 0x0
 int color material_blue_grey_800 0x0
 int color material_blue_grey_900 0x0
 int color material_blue_grey_950 0x0
@@ -1390,12 +1395,15 @@ int drawable ic_clear_black_24dp 0x0
 int drawable ic_edit_black_24dp 0x0
 int drawable ic_keyboard_arrow_left_black_24dp 0x0
 int drawable ic_keyboard_arrow_right_black_24dp 0x0
+int drawable ic_launcher_background 0x0
 int drawable ic_menu_arrow_down_black_24dp 0x0
 int drawable ic_menu_arrow_up_black_24dp 0x0
 int drawable ic_mtrl_checked_circle 0x0
 int drawable ic_mtrl_chip_checked_black 0x0
 int drawable ic_mtrl_chip_checked_circle 0x0
 int drawable ic_mtrl_chip_close_circle 0x0
+int drawable ic_qr_code 0x0
+int drawable ic_qr_code_bg 0x0
 int drawable ic_transparent 0x0
 int drawable mtrl_dialog_background 0x0
 int drawable mtrl_dropdown_arrow 0x0
@@ -1596,10 +1604,12 @@ int id parentPanel 0x0
 int id parent_matrix 0x0
 int id password_toggle 0x0
 int id percent 0x0
+int id permission_wrapper 0x0
 int id pin 0x0
 int id progress_circular 0x0
 int id progress_horizontal 0x0
 int id radio 0x0
+int id request_permission_again 0x0
 int id right 0x0
 int id right_icon 0x0
 int id right_side 0x0
@@ -1661,6 +1671,7 @@ int id text_input_start_icon 0x0
 int id textinput_counter 0x0
 int id textinput_error 0x0
 int id textinput_helper_text 0x0
+int id texture_view 0x0
 int id time 0x0
 int id title 0x0
 int id titleDividerNoCustom 0x0
@@ -1798,6 +1809,8 @@ int layout notification_template_custom_big 0x0
 int layout notification_template_icon_group 0x0
 int layout notification_template_part_chronometer 0x0
 int layout notification_template_part_time 0x0
+int layout permission_denied 0x0
+int layout scanner_activity 0x0
 int layout select_dialog_item_material 0x0
 int layout select_dialog_multichoice_material 0x0
 int layout select_dialog_singlechoice_material 0x0
@@ -1914,7 +1927,6 @@ int string mtrl_picker_toggle_to_calendar_input_mode 0x0
 int string mtrl_picker_toggle_to_day_selection 0x0
 int string mtrl_picker_toggle_to_text_input_mode 0x0
 int string mtrl_picker_toggle_to_year_selection 0x0
-int string my_string 0x0
 int string ok 0x0
 int string password_toggle_content_description 0x0
 int string path_password_eye 0x0
