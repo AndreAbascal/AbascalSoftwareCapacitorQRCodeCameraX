@@ -23,14 +23,12 @@ class QRCodeCameraXViewController: UIViewController, AVCaptureMetadataOutputObje
     public var finish: ((String, String) -> ())?;
     
     @objc func cancel(sender: UIButton) {
-        print("QRCodeCameraXViewController-->cancel()");
         dismiss(animated: true) {
             self.finish?("CANCEL","");
         }
     }
     
     func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
-        print("QRCodeCameraXViewController-->heightForView()");
         let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
         label.numberOfLines = 0
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
@@ -42,7 +40,6 @@ class QRCodeCameraXViewController: UIViewController, AVCaptureMetadataOutputObje
     }
     
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-        print("QRCodeCameraXViewController-->metadataOutput()");
         if (captureSession?.isRunning == true) {
             captureSession.stopRunning()
         }
@@ -51,19 +48,14 @@ class QRCodeCameraXViewController: UIViewController, AVCaptureMetadataOutputObje
             guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
             guard let stringValue = readableObject.stringValue else { return }
             if(stringValue.starts(with: self.url_prefix)){
-                print(stringValue+" começa com "+self.url_prefix)
-                ok(code: stringValue)
-            }else{
-                print(stringValue+" não começa com "+self.url_prefix)
+                let code: String = stringValue.replacingOccurrences(of: self.url_prefix, with: "");
+                ok(code: code)
             }
-            //AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
         }
 
-//        dismiss(animated: true)
     }
     
     func ok(code: String){
-        print("QRCodeCameraXViewController-->ok()");
         dismiss(animated: true) {
             self.finish!("OK",code);
         }
@@ -74,7 +66,6 @@ class QRCodeCameraXViewController: UIViewController, AVCaptureMetadataOutputObje
     }
     
     func requestPermissionManually(){
-        print("QRCodeCameraXViewController-->requestPermissionManually()");
         let alert = UIAlertController(title: permission_again_title, message: permission_again_label, preferredStyle: .alert)
         let settingsAction = UIAlertAction(title: open_settings_label, style: .default, handler: {action in
             // open the app permission in Settings app
@@ -91,11 +82,9 @@ class QRCodeCameraXViewController: UIViewController, AVCaptureMetadataOutputObje
         self.present(alert, animated: true, completion: nil)
     }
     @objc func reRunPermissionFlow(){
-        print("QRCodeCameraXViewController-->reRunPermissionFlow()");
         self.runPermissionFlow()
     }
     func runPermissionFlow(){
-        print("QRCodeCameraXViewController-->runPermissionFlow()");
         switch AVCaptureDevice.authorizationStatus(for: .video) {
             case .authorized: // The user has previously granted access to the camera.
                 self.authorized = true
@@ -110,40 +99,37 @@ class QRCodeCameraXViewController: UIViewController, AVCaptureMetadataOutputObje
                     }
                 }
             case .denied: // The user has previously denied access.
-                print("DENIED");
                 self.authorized = false
                 requestPermissionManually()
             case .restricted:
                 self.authorized = false
-                print("RESTRICTED");// The user can't grant access due to restrictions.
                 requestPermissionManually()
             @unknown default:
                 self.authorized = false
-                print("UNKNOWN");
                 requestPermissionManually()
         }
     }
     
     func setHeader(){
-        print("QRCodeCameraXViewController-->setHeader()");
-        let headerHeight: CGFloat = 64;
-        let header = UIView();
-        header.translatesAutoresizingMaskIntoConstraints = false;
-        let backButton = UIButton()
-        backButton.setTitle("Voltar", for: .normal);
-        backButton.setTitleColor(UIColor.white, for: UIControl.State.normal);
-        backButton.frame = CGRect(x: 0, y: 0, width: 120, height: Int(80));
-        backButton.addTarget(self, action: #selector(self.cancel(sender:)), for: UIControl.Event.touchUpInside);
-        header.addSubview(backButton)
-        self.view.addSubview(header);
-        NSLayoutConstraint(item: header, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: headerHeight).isActive = true;
-        NSLayoutConstraint(item: header, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1.0, constant: 0).isActive = true;
-        NSLayoutConstraint(item: header, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1.0, constant: 0).isActive = true;
-        NSLayoutConstraint(item: header, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 0).isActive = true;
+        DispatchQueue.main.async {
+            let headerHeight: CGFloat = 64;
+            let header = UIView();
+            header.translatesAutoresizingMaskIntoConstraints = false;
+            let backButton = UIButton()
+            backButton.setTitle("Voltar", for: .normal);
+            backButton.setTitleColor(UIColor.white, for: UIControl.State.normal);
+            backButton.frame = CGRect(x: 0, y: 0, width: 120, height: Int(80));
+            backButton.addTarget(self, action: #selector(self.cancel(sender:)), for: UIControl.Event.touchUpInside);
+            header.addSubview(backButton)
+            self.view.addSubview(header);
+            NSLayoutConstraint(item: header, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: headerHeight).isActive = true;
+            NSLayoutConstraint(item: header, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1.0, constant: 0).isActive = true;
+            NSLayoutConstraint(item: header, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1.0, constant: 0).isActive = true;
+            NSLayoutConstraint(item: header, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1.0, constant: 0).isActive = true;
+        }
     }
     
     func setupCaptureSession(){
-        print("QRCodeCameraXViewController-->reRunPermissionFlow()");
         let session = AVCaptureSession()
         let captureDevice = AVCaptureDevice.default(for: AVMediaType.video)
         do {
@@ -165,7 +151,6 @@ class QRCodeCameraXViewController: UIViewController, AVCaptureMetadataOutputObje
     }
     
     func showViews(){
-        print("QRCodeCameraXViewController-->showViews()")
         setHeader()
         let screenHeight = view.frame.size.height
         let qrCodeHeight: CGFloat = 48
@@ -202,20 +187,17 @@ class QRCodeCameraXViewController: UIViewController, AVCaptureMetadataOutputObje
     }
     
     override func viewDidAppear(_ animated: Bool){
-        print("QRCodeCameraXViewController-->viewDidAppear()")
         super.viewDidAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(self.reRunPermissionFlow), name: UIApplication.willEnterForegroundNotification, object: UIApplication.shared)
         self.runPermissionFlow()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        print("QRCodeCameraXViewController-->viewDidDisappear()")
         super.viewDidDisappear(animated)
         NotificationCenter.default.removeObserver(self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("QRCodeCameraXViewController-->viewWillAppear()")
         super.viewWillAppear(animated)
         if (captureSession?.isRunning == false) {
             captureSession.startRunning()
@@ -223,7 +205,6 @@ class QRCodeCameraXViewController: UIViewController, AVCaptureMetadataOutputObje
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        print("QRCodeCameraXViewController-->viewWillDisappear()")
         super.viewWillDisappear(animated)
         if (captureSession?.isRunning == true) {
             captureSession.stopRunning()
